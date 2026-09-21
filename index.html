@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <section id="login-section" class="login">
+
+        <h1>Biblioteca</h1>
+        <h2>Iniciar sesión</h2>
+
+        <form id="login-form">
+
+            <input
+                type="email"
+                id="correo"
+                placeholder="Correo"
+                required
+            >
+
+            <div class="campo-password">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required
+                >
+
+                <button type="button" id="mostrar-password">
+                    Mostrar
+                </button>
+
+            </div>
+
+            <button type="submit">
+                Iniciar sesión
+            </button>
+
+        </form>
+
+        <p id="mensaje-login"></p>
+
+    </section>
+
+
+    <!-- VISTA DEL USUARIO -->
+    <section id="usuario-section" hidden>
+
+        <header>
+
+            <h1>Biblioteca</h1>
+
+            <p id="bienvenida-usuario"></p>
+
+            <nav>
+
+                <button onclick="mostrarTodos()">
+                    Todos
+                </button>
+
+                <button onclick="filtrarLibros('Terror')">
+                    Terror
+                </button>
+
+                <button onclick="filtrarLibros('Amor')">
+                    Amor
+                </button>
+
+                <button onclick="filtrarLibros('Thriller')">
+                    Thriller
+                </button>
+
+                <button onclick="filtrarLibros('Temas científicos')">
+                    Temas científicos
+                </button>
+
+                <button onclick="filtrarLibros('Ciencia ficción')">
+                    Ciencia ficción
+                </button>
+
+                <button onclick="cerrarSesion()">
+                    Cerrar sesión
+                </button>
+
+            </nav>
+
+        </header>
+
+
+        <main>
+
+            <section class="lista-libros">
+
+                <h2>Libros disponibles</h2>
+
+                <div id="libros-container"></div>
+
+            </section>
+
+
+            <section class="detalle-libro">
+
+                <h2>Información del libro</h2>
+
+                <div id="detalle-container">
+
+                    <p>
+                        Selecciona un libro para ver su información.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- VISTA DEL ADMINISTRADOR -->
+    <section id="admin-section" hidden>
+
+        <header>
+
+            <h1>Biblioteca - Administrador</h1>
+
+            <p id="bienvenida-admin"></p>
+
+            <button onclick="cerrarSesion()">
+                Cerrar sesión
+            </button>
+
+        </header>
+
+
+        <main class="admin-main">
+
+            <!-- ADMINISTRAR LIBROS -->
+            <section class="admin-panel">
+
+                <h2>Administrar libros</h2>
+
+                <form id="libro-form">
+
+                    <input
+                        type="text"
+                        id="titulo-libro"
+                        placeholder="Título"
+                        required
+                    >
+
+                    <select id="autor-libro" required>
+                        <option value="">
+                            Selecciona un autor
+                        </option>
+                    </select>
+
+                    <select id="genero-libro" required>
+
+                        <option value="">
+                            Selecciona un género
+                        </option>
+
+                        <option value="Terror">
+                            Terror
+                        </option>
+
+                        <option value="Amor">
+                            Amor
+                        </option>
+
+                        <option value="Thriller">
+                            Thriller
+                        </option>
+
+                        <option value="Temas científicos">
+                            Temas científicos
+                        </option>
+
+                        <option value="Ciencia ficción">
+                            Ciencia ficción
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="number"
+                        id="cantidad-libro"
+                        placeholder="Cantidad"
+                        min="0"
+                        required
+                    >
+
+                    <button type="submit">
+                        Guardar libro
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="cancelarEdicion()"
+                    >
+                        Cancelar
+                    </button>
+
+                </form>
+
+
+                <div id="admin-libros-container"></div>
+
+            </section>
+
+
+            <!-- ADMINISTRAR AUTORES -->
+            <section class="admin-panel">
+
+                <h2>Administrar autores</h2>
+
+                <form id="autor-form">
+
+                    <input
+                        type="text"
+                        id="nombre-autor"
+                        placeholder="Nombre"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="nacionalidad-autor"
+                        placeholder="Nacionalidad"
+                        required
+                    >
+
+                    <button type="submit">
+                        Guardar autor
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="cancelarEdicionAutor()"
+                    >
+                        Cancelar
+                    </button>
+
+                </form>
+
+
+                <div id="admin-autores-container"></div>
+
+            </section>
+
+
+            <!-- PRÉSTAMOS -->
+            <section class="admin-panel">
+
+                <h2>Préstamos</h2>
+
+                <div id="admin-prestamos-container"></div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            Biblioteca - Proyecto técnico
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
